@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer By Lucky yu ok</title>
+</head>
+<style>
+    .box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32rem;
+        height: 35rem;
+        background-color: #40ffa1dd;
+        margin-left: 13rem;
+        margin-top: 20rem;
+    }
+    .circle{
+        border: 5px solid blue;
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 6rem;
+    }
+    input{
+        font-size: 7rem;
+        text-align: center;
+        transition: 1s;
+        height: auto;
+        background: transparent;
+        border: 0;
+        outline: none;
+    }
+    p{
+        position: absolute;
+        top: 23rem;
+        font-size: 4rem;
+        font-weight: bolder;
+        border: 5px solid #e2df84b9;
+        width: 25rem;
+        text-align: center;
+        height: auto;
+        border-radius: 20px;
+        background-color: #00c1a1eb;
+    }  
+    button{
+        position: absolute;
+        top: 48rem;
+        font-size: 4rem;
+        border-radius: 30px;
+        text-align: center;
+        width: 18rem;
+        background-color: #ff55c796;
+        color: white;
+        transition: 0.2s;
+        opacity: 0;
+    } 
+    .off-button{
+        position: absolute;
+        width: 20rem;
+        height: 6rem;
+        background: transparent;
+        top: 48rem;
+        right: 22rem;
+    }
+    .off-text{
+        position: absolute;
+        width: 27rem;
+        height: 6rem;
+        background: transparent;
+        top: 26.5rem;
+        right: 18rem;
+        display: none;
+    }
+    .off-timer{
+        position: absolute;
+        width: 25.5rem;
+        height: 11rem;
+        background: transparent;
+        top: 35rem;
+        right: 19rem;
+    }
+</style>
+<body>
+    
+    <div class="box">        
+        <div class="circle">
+            <p onclick="TimerStart()">Start Timer</p>
+            <input onclick="TimerRestart()" type="text" value="10" readonly>
+        </div>
+        <button onclick="Get()">Getting</button>
+    </div>
+    <div class="off-button"></div>
+    <div class="off-text"></div>
+    <div class="off-timer"></div>
+</body>
+<script>
+    var timeLeft = document.querySelector('input')
+.value;
+  function TimerStart() {
+      setInterval(function () {
+         if (timeLeft <0)  {              
+         document.querySelector('button').style.backgroundColor = 'red';
+                 document.querySelector('button').style.borderWidth = '5px';
+document.querySelector('button').innerHTML = "Get Link"
+document.querySelector('.off-button').style.display = 'none';
+document.querySelector('.off-text').style.display = 'block';  
+document.querySelector('p').innerHTML = "Over";
+document.querySelector('.off-timer').style.display = 'none';
+  
+          }      
+          else{      
+             document.querySelector('input')
+.value = timeLeft ; 
+document.querySelector('button').style.opacity = '1';
+document.querySelector('p').innerHTML = "Started";
+document.querySelector('.off-text').style.display = 'block'; 
+
+          }
+          timeLeft -= 1;
+      },1000);
+  } 
+  function TimerRestart() {
+      timeLeft = 10;
+      document.querySelector('button').style.backgroundColor = '#ff55c796';
+      
+ document.querySelector('button').innerHTML = "Getting"
+ document.querySelector('.off-button').style.display = 'block'; 
+ document.querySelector('.off-timer').style.display = 'block';
+  }
+  function Get() {
+      alert("For Restart Click Timer Number")
+  }   
+</script>
+</html>
